@@ -3,7 +3,6 @@
 
 int main()
 {
-
 	int index,flag = 0,textln,s=0,t=0;
 	char pat[200];
 	int sufP[200];
