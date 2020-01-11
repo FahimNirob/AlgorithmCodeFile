@@ -1,3 +1,4 @@
+//DFA branch code;
 #include<stdio.h>
 #include<string.h>
 char array[20]={'c','a','g','c'};
