@@ -1,16 +1,31 @@
 #include<stdio.h>
 #include<string.h>
-char array[20]={'c','a','g','c'};
+char pattern[20];
+char text[200];
 int sufpref(int s,char sc);
+int DFA(char patttern[],char text[]);
 int step=0,count=0;
+
 int main()
+{   
+    int pa,te;
+    printf("\nEnter the pattern(Without space): ");
+    scanf("%s",&pattern);
+    printf("%s\n",pattern);
+    printf("\nEnter the Text(Without space): ");
+    scanf("%s",&text);
+    printf("%s\n",text);
+
+    int x = DFA(pattern,text);
+    printf("%d\n",x);
+}
+int DFA(char patttern[],char text[])
 {
-    int n=strlen(array)-1,i;
+    int n=strlen(pattern)-1,i,m = strlen(text)-1;
     char c;
-    for(i=0;i<10;i++)
-    {
-        scanf("%c",&c);
-        if(array[step+1]==c)
+    for(i = 0;i<m;i++){
+        c = text[i];
+        if(pattern[step+1]==c)
         {
             step++;
             if(step == n)
@@ -31,10 +46,8 @@ int main()
             }
 
         }
-
     }
-    printf("Found %d times\n",count);
-
+    return count;
 }
 //creating highest number of suffuxes and prefixes which are same and returning the result.
 int sufpref(int s,char sc)
@@ -43,7 +56,7 @@ int sufpref(int s,char sc)
     int i,x=s+1,flag=0,step;
     for(i=0;i<s;i++)
     {
-        temp[i]=array[i+1];
+        temp[i]=pattern[i+1];
     }
     temp[s]=sc;
     for(int j=1;j<x;j++)
