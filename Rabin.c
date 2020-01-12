@@ -56,7 +56,6 @@ void sFunc(char pat[], char txt[], int q)
     }
 }
 
-
 int main()
 {   char txt[80],pat[80];
     int q;
