@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 void sufpTable(char pat[]);
+int KMP();
 
 int ind,flag=0,textln,s=0,t=0;
 char pat[200];
@@ -9,17 +10,24 @@ char text[500];
 
 int main()
 {
-	int count =0;
 	
 	printf("Please Enter the pattern:" );
 	scanf("%s",&pat);
-	int patlen = strlen(pat);
 	
 	//creating the array of substring
 	sufpTable(pat);
-
 	printf("Please Enter your text:\n");
 	scanf("%s",&text);
+
+	//maching pattern with text using kmp
+	int match = KMP();
+	printf("Pattern found %d time(s)\n",match);
+}
+
+int KMP()
+{
+	int count =0;
+	int patlen = strlen(pat);
 	textln=strlen(text);
 
 	while(t<textln)
@@ -54,8 +62,8 @@ int main()
 			}
 		}
 	}
+	return count;
 
-	printf("Pattern found %d time(s)\n",count);
 }
 
 void sufpTable(char pat[])
