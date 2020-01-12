@@ -1,33 +1,79 @@
 #include<stdio.h>
 #include<string.h>
+void sufpTable(char pat[]);
+
+int ind,flag=0,textln,s=0,t=0;
+char pat[200];
+int sufP[200];
+char text[500];
 
 int main()
 {
-
-	int index,flag = 0,textln,s=0,t=0;
-	char pat[200];
-	int sufP[200];
-	char text[500];
+	int count =0;
 	
 	printf("Please Enter the pattern:" );
 	scanf("%s",&pat);
-
-	index= strlen(pat);
+	int patlen = strlen(pat);
+	
 	//creating the array of substring
+	sufpTable(pat);
+
+	printf("Please Enter your text:\n");
+	scanf("%s",&text);
+	textln=strlen(text);
+
+	while(t<textln)
+	{
+		if(s<patlen-1)
+		{
+			if(text[t]==pat[s])
+			{
+				t++;
+				s++;
+			}
+			else if(s == 0 && text[t]!=pat[s])
+			{
+				t++;
+			}
+			else if(s != 0 && text[t]!=pat[s])
+			{
+				s = sufP[s-1];
+			}
+		}
+		else if( s == patlen-1)
+		{
+			if(pat[s]==text[t])
+			{
+				count++;
+				s = sufP[s];
+				t++;
+			}
+			else
+			{
+				s = sufP[s-1];
+			}
+		}
+	}
+
+	printf("Pattern found %d time(s)\n",count);
+}
+
+void sufpTable(char pat[])
+{	
+	ind = strlen(pat);
 	int i=1,j=0;
 	sufP[0]=0;
-	for(int i=0;i<index;i++)
+	for(int i=0;i<ind;i++)
 	{
 		printf("%c ",pat[i] );
 	}
-	while(i!=index)
+	while(i!=ind)
 	{
 		if(pat[j]==pat[i])
 		{
 			sufP[i]=j+1;
 			j++;
 			i++;
-
 		}
 		else
 		{
@@ -41,46 +87,8 @@ int main()
 				i++;
 
 			}
-
 		}
 	}
 	printf("\n");
-	// for(int i=0;i<index;i++)
-	// {
-	// 	printf("%d\n",sufP[i]);
-	// }
-
-	printf("Please Enter your text:\n");
-	scanf("%s",&text);
-	textln=strlen(text);
-
-	while(t<textln)
-	{
-		if(s==0 & pat[s]!=text[t])
-		{
-			t++;
-		}
-		else if(s==index-1)
-		{
-			printf("The pattern is found.\n");
-			break;
-		}
-		else if(pat[s]==text[t])
-		{
-			s++;
-			t++;
-		}
-		else if(pat[s]!=text[t])
-		{
-			if(s!=0)
-			{
-				s=sufP[s-1];
-			}
-			else
-			{
-				s=0;
-			}
-		}
-	}
-
+	return;
 }
