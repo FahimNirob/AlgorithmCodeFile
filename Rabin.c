@@ -1,6 +1,5 @@
 #include<stdio.h>
 #include<string.h>
-
 #define d 256
 
 void Rabin(char pat[], char txt[], int q)
@@ -21,7 +20,6 @@ void Rabin(char pat[], char txt[], int q)
         pHash = (d*pHash + pat[i])%q;
         tHash = (d*tHash + txt[i])%q;
     }
-
     // Sliding the pattern over text one by one
     for (i = 0; i <= txtLen - patternLen; i++)
     {
@@ -55,8 +53,6 @@ void Rabin(char pat[], char txt[], int q)
         }
     }
 }
-
-
 int main()
 {   char txt[80],pat[80];
     int q;

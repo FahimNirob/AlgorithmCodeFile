@@ -15,7 +15,6 @@ int main()
     printf("\nEnter the Text(Without space): ");
     scanf("%s",&text);
     printf("%s\n",text);
-
     int x = DFA(pattern,text);
     printf("%d\n",x);
 }
@@ -32,7 +31,6 @@ int DFA(char patttern[],char text[])
             {
                 count++;
                 step=0;
-
             }
         }
         else
@@ -42,9 +40,7 @@ int DFA(char patttern[],char text[])
             {
                 count++;
                 step=0;
-
             }
-
         }
     }
     return count;
@@ -66,14 +62,12 @@ int sufpref(int s,char sc)
         {
             s[i]=temp[i];
             p[i]=temp[i+j];
-
         }
         if(!strcmp(s,p)){
             flag++;
             step=x-j;
             break;
         }
-
     }
     if(flag==0){
         return 0;

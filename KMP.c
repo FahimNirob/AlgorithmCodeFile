@@ -10,26 +10,21 @@ char text[500];
 
 int main()
 {
-	
 	printf("Please Enter the pattern:" );
 	scanf("%s",&pat);
-	
 	//creating the array of substring
 	sufpTable(pat);
 	printf("Please Enter your text:\n");
 	scanf("%s",&text);
-
 	//maching pattern with text using kmp
 	int match = KMP();
 	printf("Pattern found %d time(s)\n",match);
 }
-
 int KMP()
 {
 	int count =0;
 	int patlen = strlen(pat);
 	textln=strlen(text);
-
 	while(t<textln)
 	{
 		if(s<patlen-1)
@@ -63,9 +58,7 @@ int KMP()
 		}
 	}
 	return count;
-
 }
-
 void sufpTable(char pat[])
 {	
 	ind = strlen(pat);
@@ -93,7 +86,6 @@ void sufpTable(char pat[])
 			{
 				sufP[i]=0;
 				i++;
-
 			}
 		}
 	}

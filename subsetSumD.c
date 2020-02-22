@@ -1,3 +1,5 @@
+//subset sum using dynamic programming
+
 #include<stdio.h>
 
 int main()
